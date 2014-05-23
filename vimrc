@@ -6,6 +6,16 @@ set background=dark
 set term=screen-256color
 color jellybeans 
 
+" move between splits buffers easy
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+" fixing delimitMate
+let delimitMate_expand_cr = 1
+let delimitMate_expand_space = 1
+
 " Lightline config
 let g:lightline = {
       \ 'colorscheme': 'jellybeans',
@@ -29,6 +39,17 @@ let g:tmuxline_preset = {
 " make backspace work
 set backspace=2
 
+" mps space to colon, time saver
+" nmap <space> :
+
+" tcomment time saver
+map <leader>c <c-_><c-_>
+
+" tomment ESC key in xterm fix
+if &term =~ 'screen' || &term =~ 'xterm'
+  let g:CommandTCancelMap = ['<ESC>', '<C-c>']
+endif
+
 " allows for mouse scrolling
 set mouse=a
 
@@ -49,9 +70,19 @@ ino <up> <Nop>
 ino <left> <Nop>
 ino <right> <Nop>
 
-" quickly edit/reload .vimrc file
+" quickly edit/reload vimrc and tmux.conf
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
+nnoremap <silent> <leader>et :e ~/.tmux.conf<CR>
+nnoremap <silent> <leader>st :so ~/.tmux.conf<CR>
+
+" :tabnew
+nmap <leader>tn :tabnew<CR> 
+" :tabp
+nmap gr :tabp<CR>
+
+" set command-t height
+let g:CommandTMaxHeight=10 
 
 :map <MiddleMouse> "*p 
 :map! <MiddleMouse> <C-R>* 
@@ -64,7 +95,6 @@ set tabstop=2
 set expandtab
 set shiftwidth=2
 set autoindent
-set smartindent
 set ignorecase
 
 set number
@@ -91,15 +121,21 @@ Bundle 'gmarik/Vundle.vim'
 "Bundle 'jelera/vim-javascript-syntax'
 "Bundle 'pangloss/vim-javascript'
 Bundle 'digitaltoad/vim-jade'
+Bundle 'cakebaker/scss-syntax.vim'
+" Bundle 'kwaledesign/scss-snippets'
+Bundle 'honza/vim-snippets'
+
 "Bundle 'scrooloose/nerdtree'
-"Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-surround'
+
+Bundle 'tomtom/tcomment_vim'
 "Bundle 'scrooloose/nerdcommenter'
 " Bundle 'godlygeek/tabular'
 " Bundle 'jamescarr/snipmate-nodejs'
-" Bundle 'MarcWeber/vim-addon-mw-utils'
-" Bundle 'tomtom/tlib_vim'
-" Bundle 'garbas/vim-snipmate'
-"Bundle 'Raimondi/delimitMate'
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'tomtom/tlib_vim'
+Bundle 'garbas/vim-snipmate'
+Bundle 'Raimondi/delimitMate'
 "Bundle 'nathanaelkane/vim-indent-guides'
 "Bundle 'scrooloose/syntastic'
 " Bundle 'Valloric/YouCompleteMe'
@@ -107,10 +143,12 @@ Bundle 'digitaltoad/vim-jade'
 Bundle 'edkolev/tmuxline.vim'
 Bundle 'itchyny/lightline.vim'
 "Bundle 'maksimr/vim-jsbeautify'
+Bundle 'terryma/vim-multiple-cursors'
 
 " Bundle from http://vim-scripts.org/vim/scripts.html
 Bundle 'L9'
-Bundle 'togglecursor'
+" Bundle 'togglecursor'
+
 
 " Git plugin not hosted on GitHub
 Plugin 'git://git.wincent.com/command-t.git'

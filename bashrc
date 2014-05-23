@@ -117,6 +117,5 @@ fi
 export PATH="/usr/local/heroku/bin:$PATH"
 
 
+export EDITOR='vim'
 export TERM="xterm-256color"
-
-
