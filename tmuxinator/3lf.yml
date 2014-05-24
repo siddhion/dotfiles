@@ -1,0 +1,13 @@
+# ~/.tmuxinator/3lf.yml
+
+name: 3lf
+root: ~/dev/3lf
+
+windows:
+  - server: 
+      layout: df55,142x41,0,0{60x41,0,0,0,81x41,61,0[81x20,61,0,2,81x20,61,21,3]}
+      panes:
+        - ls -la
+        - grunt
+        - npm start
+  - editor: vim

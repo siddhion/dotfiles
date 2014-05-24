@@ -1,0 +1,14 @@
+# ~/.tmuxinator/3lf.yml
+
+name: 3lf
+root: ~/dev/3lf
+
+windows:
+  - server: 
+      layout: tiled
+      panes:
+        - ls -la
+        - grunt
+        - npm start
+        - mongod --journal
+  - editor: vim
